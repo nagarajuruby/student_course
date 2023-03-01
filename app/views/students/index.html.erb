@@ -1,0 +1,71 @@
+<p id="notice"><%= notice %></p>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <h4 class="text-center">Students List</h4>
+  </div>
+</div>
+
+
+<div class="card mb-4">
+  <div class="card-body">
+      <h4 class="text-center mb-5">Searching Area</h4>
+      <%= search_form_for @record_filter, url: :students do |f| %>
+        <div class="row">
+          <div class='col-sm-3'>
+            <div class="form-group">
+              <%#= f.label :name %>
+              <%= f.search_field :name_cont, class: 'form-control', placeholder: "Name Search..." %>
+            </div>
+          </div>
+          <div class='col-sm-3'>
+            <div class="form-group">
+              <%#= f.label :perent_mobile %>
+              <%= f.search_field :perent_mobile_cont, class: 'form-control', placeholder: "Perent mobile number search..." %>
+            </div>
+          </div>
+          <div class='col-sm-3'>
+            <div class="form-group">
+              <%= f.submit 'Search', class: 'btn btn-block btn-outline-primary' %>
+            </div>
+          </div>
+          <div class='col-sm-3'>
+            <%= link_to "Download xls", students_path(format: :xls), class:"btn btn-outline-primary" %>
+            <%= link_to "Download pdf", students_path(format: :pdf), class:"btn btn-outline-primary" %>
+          </div>
+        </div>
+      <% end %>
+  </div>
+</div>
+
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Perent mobile</th>
+      <th>Mobile</th>
+      <th>City</th>
+      <th colspan="3">Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%= student.name %></td>
+        <td><%= student.perent_mobile %></td>
+        <td><%= student.mobile %></td>
+        <td><%= student.city %></td>
+        <td><%= link_to 'Show', student %></td>
+        <td><%= link_to 'Edit', edit_student_path(student) %></td>
+        <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Student', new_student_path, class: "btn btn-outline-primary" %> |
+<%= link_to 'Dashbord', root_path, class: "btn btn-outline-primary" %>

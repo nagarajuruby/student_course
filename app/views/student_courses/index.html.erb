@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <h4 class="text-center">Student Courses</h4>
+  </div>
+</div>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Student</th>
+      <th>Course</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @student_courses.each do |student_course| %>
+      <tr>
+        <td><%= student_course.student.name %></td>
+        <td><%= student_course.course.name %></td>
+        <td><%= link_to 'Show', student_course %></td>
+        <td><%= link_to 'Edit', edit_student_course_path(student_course) %></td>
+        <td><%= link_to 'Destroy', student_course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Student Course', new_student_course_path, class: "btn btn-outline-primary" %> |
+<%= link_to 'Dashbord', root_path, class: "btn btn-outline-primary" %>

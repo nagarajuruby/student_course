@@ -1,0 +1,27 @@
+<div class="card mb-4">
+  <div class="card-body">
+    <h4 class="text-center">Student List</h4>
+  </div>
+</div>
+
+<table class="table table-bordered text-center">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Perent mobile</th>
+      <th>Mobile</th>
+      <th>City</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%= student.name %></td>
+        <td><%= student.perent_mobile %></td>
+        <td><%= student.mobile %></td>
+        <td><%= student.city %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

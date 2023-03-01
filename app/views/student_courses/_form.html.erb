@@ -1,0 +1,27 @@
+<%= form_with(model: student_course) do |form| %>
+  <% if student_course.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(student_course.errors.count, "error") %> prohibited this student_course from being saved:</h2>
+
+      <ul>
+        <% student_course.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group mb-4">
+    <%= form.label :student_id %>
+    <%= form.select :student_id, student_list,{ prompt: 'Select Student' }, class: "form-select" %>
+  </div>
+
+  <div class="form-group mb-4">
+    <%= form.label :course_id %>
+    <%= form.select :course_id, course_list, { prompt: 'Select Course' }, class: "form-select" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: "btn btn-outline-primary" %>
+  </div>
+<% end %>

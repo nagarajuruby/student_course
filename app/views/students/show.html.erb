@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @student.name %>
+</p>
+
+<p>
+  <strong>Perent mobile:</strong>
+  <%= @student.perent_mobile %>
+</p>
+
+<p>
+  <strong>Mobile:</strong>
+  <%= @student.mobile %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @student.city %>
+</p>
+
+<%= link_to 'Edit', edit_student_path(@student), class: "btn btn-outline-primary"  %> |
+<%= link_to 'Back', students_path, class: "btn btn-outline-primary"  %>
+
+
+<div class="card mb-4 mt-4">
+  <div class="card-body">
+    <h4 class="text-center">Courses Details</h4>
+  </div>
+</div>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3">Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @student.courses.each do |course| %>
+      <tr>
+        <td><%= course.name %></td>
+        <td><%= link_to 'Show', course %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
